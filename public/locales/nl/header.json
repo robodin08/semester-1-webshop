@@ -1,0 +1,9 @@
+{
+    "search": {
+        "label": "Zoeken",
+        "placeholder": {
+            "mobile": "Zoek producten...",
+            "desktop": "Zoek naar producten, merken en meer..."
+        }
+    }
+}

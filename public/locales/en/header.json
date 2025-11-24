@@ -1,0 +1,9 @@
+{
+    "search": {
+        "label": "Search",
+        "placeholder": {
+            "mobile": "Search products...",
+            "desktop": "Search for products, brands and more..."
+        }
+    }
+}

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="shopGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Shopping bag body -->
+  <path d="M 20 35 L 15 85 Q 15 92 22 92 L 78 92 Q 85 92 85 85 L 80 35 Z" 
+        fill="url(#shopGradient)" 
+        stroke="#312E81" 
+        stroke-width="2"/>
+  
+  <!-- Bag handles -->
+  <path d="M 30 35 Q 30 20 35 15 Q 40 10 50 10 Q 60 10 65 15 Q 70 20 70 35" 
+        fill="none" 
+        stroke="#312E81" 
+        stroke-width="3"
+        stroke-linecap="round"/>
+  
+  <!-- Bag top edge -->
+  <rect x="15" y="32" width="70" height="6" 
+        fill="#312E81" 
+        rx="1"/>
+  
+  <!-- Shine effect -->
+  <ellipse cx="35" cy="50" rx="8" ry="12" 
+           fill="white" 
+           opacity="0.3"/>
+</svg>
