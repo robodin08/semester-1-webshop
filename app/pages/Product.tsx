@@ -1,11 +1,12 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { IoCartOutline, IoCheckmarkOutline } from "react-icons/io5";
+import { IoCartOutline, IoCheckmarkOutline, IoClose, IoChevronBack, IoChevronForward } from "react-icons/io5";
 
 import type { Product as ProductType } from "~/data/products";
 
 import { useCart } from "~/hooks/useCart";
+import { splitCurrencyAmount } from "~/utils";
 
 function Product() {
   const { pid } = useParams<{ pid: string }>();
@@ -15,6 +16,7 @@ function Product() {
   const [product, setProduct] = useState<ProductType | null>(null);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [image, setImage] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -36,8 +38,20 @@ function Product() {
     fetchProduct();
   }, [cartLoaded]);
 
+  function handlePreviousImage() {
+    if (!product) return;
+    setImage((prev) => (prev === 0 ? product.images - 1 : prev - 1));
+  }
+
+  function handleNextImage() {
+    if (!product) return;
+    setImage((prev) => (prev === product.images - 1 ? 0 : prev + 1));
+  }
+
   if (!loaded) return null;
   if (!product) throw new Error(`Product not found`);
+
+  const { euros, cents } = splitCurrencyAmount(product.price);
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -46,7 +60,10 @@ function Product() {
         {/* Left column */}
         <div className="flex flex-col">
           {/* Main Image */}
-          <div className="flex aspect-square cursor-zoom-in items-center justify-center overflow-hidden rounded-2xl bg-gray-200">
+          <div
+            className="flex aspect-square cursor-zoom-in items-center justify-center overflow-hidden rounded-2xl"
+            onClick={() => setLightboxOpen(true)}
+          >
             <div className="h-full w-full p-5" id="image-container">
               <img src={`/assets/products/${product.id}/${image}_big.png`} className="h-full w-full object-contain" />
             </div>
@@ -75,10 +92,8 @@ function Product() {
         <div className="flex flex-col">
           <div className="mb-4 font-bold text-red-600">
             <span className="text-5xl leading-none sm:text-6xl">
-              {Math.floor(product.price / 100)}
-              {product.price % 100 !== 0 && (
-                <sup className="text-3xl sm:text-4xl">{String(product.price % 100).padStart(2, "0")}</sup>
-              )}
+              {euros}
+              {Number(cents) !== 0 && <sup className="text-3xl sm:text-4xl">{cents}</sup>}
             </span>
           </div>
 
@@ -103,6 +118,84 @@ function Product() {
           )}
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && (
+        <div
+          className="bg-opacity-95 fixed inset-0 z-50 flex items-center justify-center bg-white"
+          onClick={() => setLightboxOpen(false)}
+        >
+          {/* Close Button */}
+          <button
+            className="absolute top-4 right-4 z-50 cursor-pointer rounded-full bg-gray-200 p-2 text-gray-800 transition-all hover:bg-gray-300"
+            onClick={() => setLightboxOpen(false)}
+          >
+            <IoClose size={32} />
+          </button>
+
+          {/* Previous Button */}
+          {product.images > 1 && (
+            <button
+              className="absolute left-4 z-50 cursor-pointer rounded-full bg-gray-200 p-2 text-gray-800 transition-all hover:bg-gray-300"
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePreviousImage();
+              }}
+            >
+              <IoChevronBack size={32} />
+            </button>
+          )}
+
+          {/* Image Container */}
+          <div
+            className="relative flex h-full w-full items-center justify-center p-12"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={`/assets/products/${product.id}/${image}_big.png`}
+              className="max-h-full max-w-full object-contain"
+              alt={product.name}
+            />
+          </div>
+
+          {/* Next Button */}
+          {product.images > 1 && (
+            <button
+              className="absolute right-4 z-50 cursor-pointer rounded-full bg-gray-200 p-2 text-gray-800 transition-all hover:bg-gray-300"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNextImage();
+              }}
+            >
+              <IoChevronForward size={32} />
+            </button>
+          )}
+
+          {/* Thumbnail Navigation */}
+          {product.images > 1 && (
+            <div className="absolute bottom-4 left-1/2 z-50 flex -translate-x-1/2 gap-2">
+              {Array.from({ length: product.images }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setImage(index);
+                  }}
+                  className={`h-16 w-16 overflow-hidden rounded-lg border-2 transition-all ${
+                    image === index ? "border-blue-500" : "border-gray-300 opacity-60 hover:opacity-100"
+                  }`}
+                >
+                  <img
+                    src={`/assets/products/${product.id}/${index}_small.png`}
+                    className="h-full w-full object-contain"
+                    alt={`${product.name} thumbnail ${index + 1}`}
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

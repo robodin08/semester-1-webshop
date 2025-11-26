@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { IoAdd, IoRemove, IoTrash } from "react-icons/io5";
 import { useCart } from "~/hooks/useCart";
-import { formatPrice } from "~/utils";
+import { formatCurrency } from "~/utils";
 
 function Cart() {
   const { loaded, cart, total, totalQuantity, incrementItemQuantity, decrementItemQuantity, setItemQuantity } =
@@ -64,7 +64,7 @@ function Cart() {
                         <h3 className="text-lg font-semibold text-gray-900">{item.name}</h3>
                       </Link>
                       <p className="mt-1 line-clamp-2 text-sm text-gray-600">{item.description}</p>
-                      <p className="mt-2 text-lg font-semibold text-gray-900">{formatPrice(item.price)}</p>
+                      <p className="mt-2 text-lg font-semibold text-gray-900">{formatCurrency(item.price)}</p>
                     </div>
 
                     <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
@@ -116,7 +116,7 @@ function Cart() {
                   {/* Item Total - Positioned for responsive */}
                   <div className="flex shrink-0 items-start justify-between border-t border-gray-200 pt-3 sm:justify-end sm:border-0 sm:pt-0">
                     <span className="text-sm font-medium text-gray-700 sm:hidden">{t("subtotal")}:</span>
-                    <p className="text-lg font-semibold text-gray-900">{formatPrice(itemTotal)}</p>
+                    <p className="text-lg font-semibold text-gray-900">{formatCurrency(itemTotal)}</p>
                   </div>
                 </div>
               );
@@ -134,12 +134,12 @@ function Cart() {
             <div className="space-y-3 border-t border-gray-200 pt-4">
               <div className="flex justify-between text-base text-gray-900">
                 <span>{t("subtotal")}</span>
-                <span>{formatPrice(total)}</span>
+                <span>{formatCurrency(total)}</span>
               </div>
 
               <div className="flex justify-between border-t border-gray-200 pt-3 text-lg font-semibold text-gray-900">
                 <span>{t("total")}</span>
-                <span>{formatPrice(total)}</span>
+                <span>{formatCurrency(total)}</span>
               </div>
             </div>
 
