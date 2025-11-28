@@ -1,1 +1,9 @@
-{}
+{
+    "pageTitle": {
+        "home": "Webshoppy",
+        "search": "Search",
+        "searchWithQuery": "{{query}} - Search",
+        "cart": "Shopping Cart",
+        "product": "{{name}}"
+    }
+}

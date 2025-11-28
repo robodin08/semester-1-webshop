@@ -10,7 +10,7 @@ import { splitCurrencyAmount } from "~/utils";
 
 function Product() {
   const { pid } = useParams<{ pid: string }>();
-  const { t } = useTranslation("product");
+  const { t } = useTranslation(["product", "common"]);
   const { loaded: cartLoaded, cart, getProductById, incrementItemQuantity } = useCart();
 
   const [product, setProduct] = useState<ProductType | null>(null);
@@ -30,14 +30,14 @@ function Product() {
 
       if (p) {
         setProduct(p);
-        document.title = `${p.name} | Webshoppy`;
+        document.title = `${t("pageTitle.product", { ns: "common", name: p.name })} | ${t("pageTitle.home", { ns: "common" })}`;
       }
 
       setLoaded(true);
     }
 
     fetchProduct();
-  }, [cartLoaded]);
+  }, [cartLoaded, t]);
 
   function handlePreviousImage() {
     if (!product) return;
@@ -49,7 +49,7 @@ function Product() {
     setImage((prev) => (prev === product.images - 1 ? 0 : prev + 1));
   }
 
-  if (!loaded || !cartLoaded) return null;
+  if (!loaded) return null;
   if (!product) throw new Error(`Product not found`);
 
   const { euros, cents } = splitCurrencyAmount(product.price);

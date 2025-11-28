@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { IoAdd, IoRemove, IoTrash, IoCheckmarkCircle, IoInformationCircle } from "react-icons/io5";
@@ -8,7 +9,11 @@ import { DELIVERY_COST, FREE_DELIVERY_THRESHOLD } from "~/constants/delivery";
 function Cart() {
   const { loaded, cart, total, totalQuantity, incrementItemQuantity, decrementItemQuantity, setItemQuantity } =
     useCart();
-  const { t } = useTranslation("cart");
+  const { t } = useTranslation(["cart", "common"]);
+
+  useEffect(() => {
+    document.title = `${t("pageTitle.cart", { ns: "common" })} | ${t("pageTitle.home", { ns: "common" })}`;
+  }, [t]);
 
   if (!loaded) return null;
 

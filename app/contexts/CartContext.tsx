@@ -35,7 +35,7 @@ export interface CartContextType {
 export const CartContext = createContext<CartContextType | null>(null);
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [cart, setCart] = useState<Cart>({});
   const [quantityCart, setQuantityCart] = useState<QuantityCart>({});
@@ -93,7 +93,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
 
     loadCart();
-  }, [i18n.resolvedLanguage]);
+  }, [t]);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(quantityCart));
@@ -145,7 +145,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
     window.addEventListener("storage", handleStorageChange);
     return () => window.removeEventListener("storage", handleStorageChange);
-  }, [i18n.resolvedLanguage]);
+  }, [t]);
 
   // to api
   async function getProductById(id: string): Promise<Product | undefined> {

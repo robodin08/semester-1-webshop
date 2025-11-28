@@ -1,1 +1,9 @@
-{}
+{
+    "pageTitle": {
+        "home": "Webshoppy",
+        "search": "Zoeken",
+        "searchWithQuery": "{{query}} - Zoeken",
+        "cart": "Winkelwagen",
+        "product": "{{name}}"
+    }
+}

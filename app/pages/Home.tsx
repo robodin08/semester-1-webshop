@@ -1,10 +1,13 @@
 import { useEffect } from "react";
 import { Link } from "react-router";
+import { useTranslation } from "react-i18next";
 
 function Home() {
+  const { t } = useTranslation("common");
+
   useEffect(() => {
-    document.title = `Webshoppy`;
-  }, []);
+    document.title = t("pageTitle.home");
+  }, [t]);
 
   return (
     <div>

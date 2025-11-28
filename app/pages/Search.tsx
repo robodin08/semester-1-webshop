@@ -10,7 +10,7 @@ import type { SortOption } from "~/contexts/CartContext";
 function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { t } = useTranslation("search");
+  const { t } = useTranslation(["search", "common"]);
   const { searchProducts } = useCart();
 
   const [products, setProducts] = useState<Product[]>([]);
@@ -24,8 +24,8 @@ function Search() {
 
   useEffect(() => {
     if (!query || query === "") navigate("/");
-    document.title = query ? `${query} - Search | Webshoppy` : "Search | Webshoppy";
-  }, [query]);
+    document.title = `${t("pageTitle.searchWithQuery", { ns: "common", query: query || "" })} | ${t("pageTitle.home", { ns: "common" })}`;
+  }, [query, t]);
 
   useEffect(() => {
     const params = new URLSearchParams();
