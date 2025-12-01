@@ -22,7 +22,7 @@ function Cart() {
 
   if (isEmpty) {
     return (
-      <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
+      <>
         <h1 className="mb-4 text-3xl font-bold text-gray-900">{t("emptyCart")}</h1>
         <Link
           to="/"
@@ -30,7 +30,7 @@ function Cart() {
         >
           {t("continueShopping")}
         </Link>
-      </div>
+      </>
     );
   }
 
@@ -39,7 +39,7 @@ function Cart() {
   const finalTotal = total + deliveryCost;
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <>
       <h1 className="mb-8 text-3xl font-bold text-gray-900">{t("shoppingCart")}</h1>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -187,7 +187,7 @@ function Cart() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

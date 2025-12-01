@@ -55,7 +55,7 @@ function Product() {
   const { euros, cents } = splitCurrencyAmount(product.price);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <>
       <h1 className="mb-4 text-2xl font-bold text-gray-900 sm:mb-6 sm:text-3xl lg:text-4xl">{product.name}</h1>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-16">
         {/* Left column */}
@@ -195,7 +195,7 @@ function Product() {
           )}
         </div>
       )}
-    </div>
+    </>
   );
 }
 

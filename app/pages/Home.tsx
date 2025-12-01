@@ -10,7 +10,7 @@ function Home() {
   }, [t]);
 
   return (
-    <div>
+    <>
       <h1 className="mb-4 text-4xl font-bold text-gray-900">Home Page</h1>
       <p className="mb-6 text-lg text-gray-700">Welcome to our webshop!</p>
       <nav>
@@ -42,7 +42,7 @@ function Home() {
           </li>
         </ul>
       </nav>
-    </div>
+    </>
   );
 }
 
