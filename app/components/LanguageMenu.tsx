@@ -1,5 +1,5 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { IoCheckmark, IoLanguage } from "react-icons/io5";
+import { IoCheckmarkOutline, IoGlobeOutline } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 
 import { languages } from "~/constants/languages";
@@ -10,7 +10,7 @@ export default function LanguageMenu() {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <MenuButton className="cursor-pointer rounded-full p-2.5 hover:bg-gray-100">
-        <IoLanguage size={22} className="text-gray-600" />
+        <IoGlobeOutline size={22} className="text-gray-600" />
       </MenuButton>
 
       <MenuItems
@@ -31,7 +31,7 @@ export default function LanguageMenu() {
                   } ${i18n.resolvedLanguage === lng ? "cursor-default" : "cursor-pointer"}`}
                 >
                   <span>{name}</span>
-                  {i18n.resolvedLanguage === lng && <IoCheckmark className="text-blue-600" />}
+                  {i18n.resolvedLanguage === lng && <IoCheckmarkOutline className="text-blue-600" />}
                 </button>
               )}
             </MenuItem>

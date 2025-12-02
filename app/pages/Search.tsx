@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
-import { IoClose, IoFunnel } from "react-icons/io5";
+import { IoCloseOutline, IoFunnel } from "react-icons/io5";
 import { useCart } from "~/hooks/useCart";
 import { ProductCard } from "~/components/ProductCard";
 import type { Product } from "~/constants/products";
@@ -211,7 +211,7 @@ function Search() {
                   onClick={() => setShowMobileFilters(false)}
                   className="rounded-full p-2 text-gray-500 hover:bg-gray-100"
                 >
-                  <IoClose size={24} />
+                  <IoCloseOutline size={24} />
                 </button>
               </div>
 

@@ -1,7 +1,13 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { IoCartOutline, IoCheckmarkOutline, IoClose, IoChevronBack, IoChevronForward } from "react-icons/io5";
+import {
+  IoCartOutline,
+  IoCheckmarkOutline,
+  IoCloseOutline,
+  IoChevronBackOutline,
+  IoChevronForwardOutline,
+} from "react-icons/io5";
 
 import type { Product as ProductType } from "~/constants/products";
 
@@ -131,7 +137,7 @@ function Product() {
             className="absolute top-4 right-4 z-50 cursor-pointer rounded-full bg-gray-200 p-2 text-gray-800 transition-all hover:bg-gray-300"
             onClick={() => setLightboxOpen(false)}
           >
-            <IoClose size={32} />
+            <IoCloseOutline size={32} />
           </button>
 
           {/* Previous Button */}
@@ -143,7 +149,7 @@ function Product() {
                 handlePreviousImage();
               }}
             >
-              <IoChevronBack size={32} />
+              <IoChevronBackOutline size={32} />
             </button>
           )}
 
@@ -167,7 +173,7 @@ function Product() {
                 handleNextImage();
               }}
             >
-              <IoChevronForward size={32} />
+              <IoChevronForwardOutline size={32} />
             </button>
           )}
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { IoSearch, IoPersonOutline, IoCartOutline } from "react-icons/io5";
+import { IoSearchOutline, IoPersonOutline, IoCartOutline } from "react-icons/io5";
 import { Link, useNavigate, useSearchParams } from "react-router";
 
 import { useCart } from "~/hooks/useCart";
@@ -46,7 +46,7 @@ export default function Header() {
         {/* Search */}
         <div className="relative hidden w-full max-w-xl flex-1 sm:flex">
           <div className="relative w-full">
-            <IoSearch size={20} className="absolute top-1/2 left-4 -translate-y-1/2 text-gray-400" />
+            <IoSearchOutline size={20} className="absolute top-1/2 left-4 -translate-y-1/2 text-gray-400" />
             <input
               id="search-desktop"
               type="text"
@@ -89,7 +89,7 @@ export default function Header() {
       <div className="block border-t border-gray-200/80 bg-white/95 px-4 py-3 backdrop-blur-md sm:hidden">
         <div className="relative flex">
           <div className="relative w-full">
-            <IoSearch size={18} className="absolute top-1/2 left-4 -translate-y-1/2 text-gray-400" />
+            <IoSearchOutline size={18} className="absolute top-1/2 left-4 -translate-y-1/2 text-gray-400" />
             <input
               id="search-mobile"
               type="text"
@@ -103,7 +103,7 @@ export default function Header() {
               onClick={handleSearch}
               className="absolute top-1/2 right-1.5 -translate-y-1/2 rounded-full bg-linear-to-r from-blue-600 to-blue-700 px-4 py-1.5 text-sm font-medium text-white shadow-md hover:shadow-lg"
             >
-              <IoSearch size={16} />
+              <IoSearchOutline size={16} />
             </button>
           </div>
         </div>

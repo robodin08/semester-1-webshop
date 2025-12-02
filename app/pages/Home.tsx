@@ -17,27 +17,27 @@ function Home() {
         <ul className="space-y-2">
           <li>
             <Link to="/p/0" className="text-blue-600 hover:text-blue-800 hover:underline">
-              Product 0
+              Phantom Headset
             </Link>
           </li>
           <li>
             <Link to="/p/1" className="text-blue-600 hover:text-blue-800 hover:underline">
-              Product 1
+              Viper Gaming Mouse
             </Link>
           </li>
           <li>
             <Link to="/p/2" className="text-blue-600 hover:text-blue-800 hover:underline">
-              Product 2
+              Hawk Eye Monitor
             </Link>
           </li>
           <li>
             <Link to="/p/3" className="text-blue-600 hover:text-blue-800 hover:underline">
-              Product 3
+              Expensive Gaming Mouse
             </Link>
           </li>
           <li>
             <Link to="/p/4" className="text-blue-600 hover:text-blue-800 hover:underline">
-              Product 4
+              Mega Monitor
             </Link>
           </li>
         </ul>

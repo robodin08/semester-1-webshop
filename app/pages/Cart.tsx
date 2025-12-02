@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import { IoAdd, IoRemove, IoTrash, IoCheckmarkCircle, IoInformationCircle } from "react-icons/io5";
+import { IoAddOutline, IoRemoveOutline, IoTrash, IoCheckmarkCircleOutline, IoInformationCircle } from "react-icons/io5";
 import { useCart } from "~/hooks/useCart";
 import { formatCurrency } from "~/utils";
 import { DELIVERY_COST, FREE_DELIVERY_THRESHOLD } from "~/constants/delivery";
@@ -94,7 +94,7 @@ function Cart() {
                             {item.quantity === 1 ? (
                               <IoTrash className="h-4 w-4 text-gray-700" />
                             ) : (
-                              <IoRemove className="h-4 w-4 text-gray-700" />
+                              <IoRemoveOutline className="h-4 w-4 text-gray-700" />
                             )}
                           </button>
                           <span className="flex h-8 w-12 shrink-0 items-center justify-center border-x border-gray-300 bg-white text-sm font-medium">
@@ -105,7 +105,7 @@ function Cart() {
                             disabled={item.quantity >= (item.maxQuantity ?? 999)}
                             className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-gray-50"
                           >
-                            <IoAdd className="h-4 w-4 text-gray-700" />
+                            <IoAddOutline className="h-4 w-4 text-gray-700" />
                           </button>
                         </div>
                       </div>
@@ -156,7 +156,7 @@ function Cart() {
 
               {isFreeDelivery && (
                 <div className="flex items-center gap-2 rounded-md bg-green-50 p-3 text-sm text-green-800">
-                  <IoCheckmarkCircle className="h-5 w-5 shrink-0" />
+                  <IoCheckmarkCircleOutline className="h-5 w-5 shrink-0" />
                   <span>{t("freeDeliveryApplied")}</span>
                 </div>
               )}
