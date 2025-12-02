@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-// import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import type { Product } from "~/constants/products";
 import { HOME_CATEGORIES } from "~/constants/categories";
 import { useCart } from "~/hooks/useCart";
-import { getProductImage } from "~/utils";
+import { formatCurrency, getProductImage } from "~/utils";
 
 function Home() {
   const { t } = useTranslation(["home", "common"]);
@@ -75,7 +74,7 @@ function Home() {
       {/* Popular Products Section */}
       {popularProducts && popularProducts.length > 0 && (
         <section className="bg-gray-50 py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
             <div className="mb-8 flex items-center justify-between">
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">{t("sections.popular")}</h2>
@@ -105,7 +104,7 @@ function Home() {
                       {product.name}
                     </h3>
                     <div className="mt-auto">
-                      <p className="text-lg font-bold text-red-600">€{(product.price / 100).toFixed(2)}</p>
+                      <p className="text-lg font-bold text-red-600">{formatCurrency(product.price)}</p>
                     </div>
                   </div>
                 </a>
@@ -125,7 +124,7 @@ function Home() {
       {/* New Products Section */}
       {newProducts && newProducts.length > 0 && (
         <section className="bg-white py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
             <div className="mb-8 flex items-center justify-between">
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">{t("sections.new")}</h2>
@@ -160,7 +159,7 @@ function Home() {
                       {product.name}
                     </h3>
                     <div className="mt-auto">
-                      <p className="text-lg font-bold text-red-600">€{(product.price / 100).toFixed(2)}</p>
+                      <p className="text-lg font-bold text-red-600">{formatCurrency(product.price)}</p>
                     </div>
                   </div>
                 </a>

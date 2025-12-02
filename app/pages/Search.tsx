@@ -233,7 +233,7 @@ function Search() {
       {showMobileFilters && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div className="bg-opacity-50 fixed inset-0 bg-black" onClick={() => setShowMobileFilters(false)} />
-          <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl">
+          <div className="fixed inset-y-0 right-0 w-full bg-white shadow-xl">
             <div className="flex h-full flex-col">
               {/* Header */}
               <div className="flex items-center justify-between border-b border-gray-200 px-4 py-4">
